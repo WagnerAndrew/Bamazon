@@ -13,7 +13,7 @@ CREATE TABLE products (
 );
 
 INSERT INTO products (Product, Department, Price, Quantity)
-VALUES ("Skis", "Sporting Goods", 100.00, 30);
+VALUES ("Skis", "Sporting Goods", 100.00, 4);
 
 INSERT INTO products (Product, Department, Price, Quantity)
 VALUES ("Pants", "Clothing", 40.00, 10);

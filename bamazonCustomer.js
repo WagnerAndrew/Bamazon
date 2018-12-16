@@ -20,14 +20,12 @@ connection.connect(function (err) {
 //START USER SEARCH FUNCTION
 function userSearch() {
 
-    connection.query("SELECT * FROM products", function (err, res) {
+    connection.query("SELECT ID, Product, Price FROM products", function (err, res) {
         if (err) throw err;
 
         //Prints Table
-        console.log("\n\n");
-            console.table(res);
         console.log("\n");
-        
+            console.table(res);
 
         //Runs purchase inquiry
         inquirer.prompt([
@@ -105,24 +103,7 @@ function keepShopping() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//VERSION WITH FUNCTIONS BROKEN OUT
 
 // var mysql = require("mysql");
 // var inquirer = require("inquirer");
@@ -213,79 +194,4 @@ function keepShopping() {
 
 
 // -----------------------------------------------------------------------------------------------------------------
-
-
-//WORKING:
-
-// var mysql = require("mysql");
-// var inquirer = require("inquirer");
-// const cTable = require('console.table');
-
-// var connection = mysql.createConnection({
-//     host: "localhost",
-//     port: 8889,
-//     user: "root",
-//     password: "root",
-//     database: "bamazonDB"
-// });
-
-// connection.connect(function (err) {
-//     if (err) throw err;
-//     userSearch();
-// });
-
-
-
-// //START USER SEARCH FUNCTION
-// function userSearch() {
-
-//     connection.query("SELECT * FROM products", function (err, res) {
-//         if (err) throw err;
-
-//         //Prints Table
-//         console.table(res);
-
-//         //Runs purchase inquiry
-//         inquirer.prompt([
-//             {
-//                 type: "input",
-//                 name: "id",
-//                 message: "What ID number do you want to buy?"
-//             },
-
-//             {
-//                 type: "input",
-//                 name: "quantity",
-//                 message: "How many do you want to buy?"
-//             }
-
-//         ]).then(function (userBuy) {
-
-//             connection.query("SELECT * FROM products WHERE ?", { id: userBuy.id }, function (err, res) {
-//                 if (err) throw err;
-
-//                 if (res[0].quantity < userBuy.quantity){
-//                     console.log("Insufficient quantity!");
-
-//                 }else{
-//                     console.log(`You total for ${userBuy.quantity} ${res[0].product_name} will be $${costCalculator(res[0].price, userBuy.quantity)} `);
-//                 };
-
-//                 connection.end();
-
-//             });
-//         });
-//     });
-// }
-// //END USER SEARCH FUNCTION
-
-
-// //COST CALCULATOR FUNCTION    
-// function costCalculator (price, quantity) {
-//     return price * quantity
-// };
-
-
-// -----------------------------------------------------------------------------------------------------------------
-
 
