@@ -9,39 +9,39 @@ CREATE TABLE products (
   Department VARCHAR(100) NOT NULL,
   Price DECIMAL(10,2) NOT NULL,
   Quantity INT(100) NOT NULL,
-  Product_Sales DECIMAL(10,2),
+  Product_Sales DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (ID)
 );
 
-INSERT INTO products (Product, Department, Price, Quantity)
-VALUES ("Skis", "Sporting Goods", 100.00, 4);
+INSERT INTO products (Product, Department, Price, Quantity, Product_Sales)
+VALUES ("Skis", "Sporting Goods", 100.00, 20, 0);
 
-INSERT INTO products (Product, Department, Price, Quantity)
-VALUES ("Pants", "Clothing", 40.00, 10);
+INSERT INTO products (Product, Department, Price, Quantity, Product_Sales)
+VALUES ("Pants", "Clothing", 40.00, 10, 0);
 
-INSERT INTO products (Product, Department, Price, Quantity)
-VALUES ("Chicken Soup", "Food", 5.00, 50);
+INSERT INTO products (Product, Department, Price, Quantity, Product_Sales)
+VALUES ("Chicken Soup", "Food", 5.00, 50, 0);
 
-INSERT INTO products (Product, Department, Price, Quantity)
-VALUES ("Stereo", "Electronics", 40.00, 20);
+INSERT INTO products (Product, Department, Price, Quantity, Product_Sales)
+VALUES ("Stereo", "Electronics", 40.00, 20, 0);
 
-INSERT INTO products (Product, Department, Price, Quantity)
-VALUES ("Mug", "Home Goods", 10.00, 40);
+INSERT INTO products (Product, Department, Price, Quantity, Product_Sales)
+VALUES ("Mug", "Home Goods", 10.00, 40, 0);
 
-INSERT INTO products (Product, Department, Price, Quantity)
-VALUES ("Fishing Pole", "Sporting Goods", 20.00, 35);
+INSERT INTO products (Product, Department, Price, Quantity, Product_Sales)
+VALUES ("Fishing Pole", "Sporting Goods", 20.00, 35, 0);
 
-INSERT INTO products (Product, Department, Price, Quantity)
-VALUES ("Sunglasses", "Accessories", 70.00, 45);
+INSERT INTO products (Product, Department, Price, Quantity, Product_Sales)
+VALUES ("Sunglasses", "Accessories", 70.00, 45, 0);
 
-INSERT INTO products (Product, Department, Price, Quantity)
-VALUES ("Monopoly", "Games", 20.00, 50);
+INSERT INTO products (Product, Department, Price, Quantity, Product_Sales)
+VALUES ("Monopoly", "Games", 20.00, 50, 0);
 
-INSERT INTO products (Product, Department, Price, Quantity)
-VALUES ("Scissors", "Office Supplies", 5.00, 30);
+INSERT INTO products (Product, Department, Price, Quantity, Product_Sales)
+VALUES ("Scissors", "Office Supplies", 5.00, 30, 0);
 
-INSERT INTO products (Product, Department, Price, Quantity)
-VALUES ("Tape", "Office Supplies", 10.00, 10);
+INSERT INTO products (Product, Department, Price, Quantity, Product_Sales)
+VALUES ("Tape", "Office Supplies", 10.00, 10, 0);
 
 
 SELECT * FROM products;
