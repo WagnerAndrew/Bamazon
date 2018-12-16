@@ -87,12 +87,20 @@ function lowInventory() {
     connection.query("SELECT * FROM products WHERE (Quantity) < 5", function (err, res) {
         if (err) throw err;
 
+        if (res.length < 1){
+        console.log("\n*******************************************************\nThere are no products with quantity less than 5\n*******************************************************\n");
+        userSearch();
+        }else{
         //Prints Table
         console.log("\n");
         console.table(res);
         console.log("\n");
 
         userSearch();
+
+    }
+
+
     });
 
 }
@@ -111,13 +119,25 @@ function addToInventory() {
             {
                 type: "input",
                 name: "id",
-                message: "What ID number do you want to add inventory to?"
+                message: "What ID number do you want to add inventory to?",
+                validate: function(value) {
+                    if (isNaN(value) === false) {
+                      return true;
+                    }
+                    return false;
+                  }
             },
 
             {
                 type: "input",
                 name: "quantity",
-                message: "How many do you want to add"
+                message: "How many do you want to add",
+                validate: function(value) {
+                    if (isNaN(value) === false) {
+                      return true;
+                    }
+                    return false;
+                  }
             }
 
         ]).then(function (add) {
@@ -132,7 +152,7 @@ function addToInventory() {
                         
                     });
 
-                        connection.query("SELECT ID, Product, Price, Quantity FROM products", function (err, res) {
+                        connection.query("SELECT ID, Product, Price, Quantity FROM products WHERE ?", { ID: add.id }, function (err, res) {
                             if (err) throw err;
                             
                             console.log("\n***************************\nYou added " + add.quantity + " to " + res[0].Product + "\n");
@@ -172,12 +192,24 @@ function addNewProduct() {
             {
                 type: "input",
                 name: "price",
-                message: "What is the price?"
+                message: "What is the price?",
+                validate: function(value) {
+                    if (isNaN(value) === false) {
+                      return true;
+                    }
+                    return false;
+                  }
             },
             {
                 type: "input",
                 name: "quantity",
-                message: "How many do you want to add?"
+                message: "How many do you want to add?",
+                validate: function(value) {
+                    if (isNaN(value) === false) {
+                      return true;
+                    }
+                    return false;
+                  }
             },
 
 

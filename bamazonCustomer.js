@@ -32,13 +32,25 @@ function userSearch() {
             {
                 type: "input",
                 name: "id",
-                message: "What ID number do you want to buy?"
+                message: "What ID number do you want to buy?",
+                validate: function(value) {
+                    if (isNaN(value) === false) {
+                      return true;
+                    }
+                    return false;
+                  }
             },
 
             {
                 type: "input",
                 name: "quantity",
-                message: "How many do you want to buy?"
+                message: "How many do you want to buy?",
+                validate: function(value) {
+                    if (isNaN(value) === false) {
+                      return true;
+                    }
+                    return false;
+                  }
             }
 
         ]).then(function (userBuy) {
@@ -52,12 +64,14 @@ function userSearch() {
                     keepShopping();
 
                 } else {
+                    var cost = costCalculator(res[0].Price, userBuy.quantity);
+                    var productSale = parseInt(res[0].Product_Sales) + parseInt(cost);
 
-                    console.log(`\nYour total for ${userBuy.quantity} ${res[0].Product} will be $${costCalculator(res[0].Price, userBuy.quantity)}\n`);
+                    console.log(`\nYour total for ${userBuy.quantity} ${res[0].Product} will be $${cost}\n`);
 
                     var quantityUpdate = (parseInt(res[0].Quantity) - parseInt(userBuy.quantity));
 
-                    connection.query("UPDATE products SET ? WHERE ?", [{ Quantity: quantityUpdate }, { id: userBuy.id }], function (err, res) {
+                    connection.query("UPDATE products SET ? WHERE ?", [{ Quantity: quantityUpdate, Product_Sales: productSale }, { ID: userBuy.id }], function (err, res) {
                         if (err) throw err;
 
                     });
