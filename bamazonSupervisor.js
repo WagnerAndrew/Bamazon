@@ -120,9 +120,10 @@ function addNewDepartment() {
             connection.query("SELECT Department, Overhead_Cost FROM departments ORDER BY DepartmentID DESC LIMIT 1", function (err, res) {
                 if (err) throw err;
 
-                console.log("You added: \n");
+                console.log("\n*************************************\nYou added:\n");
                 console.table(res);
-
+                console.log("\n*************************************");
+                
                 userSearch();
 
             });
